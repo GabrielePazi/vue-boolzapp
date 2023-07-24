@@ -3,3 +3,33 @@
   margin: 0;
   padding: 0;
 }
+
+body {
+  background-image: url(./imgs/mine.jpg);
+}
+
+.background-upper-bar {
+  height: 100px;
+  background-color: rgb(0, 150, 136);
+}
+
+.main-upper-bar {
+  height: 70px;
+}
+
+.sidebar-section {
+  flex-grow: 1;
+}
+
+.chat-section {
+  flex-grow: 2;
+}
+
+.sidebar-upperbar {
+  height: 70px;
+}
+
+.profile-photo-user img {
+  width: 50px;
+  aspect-ratio: 1/1;
+}

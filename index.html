@@ -1,8 +1,6 @@
-
-
-
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -12,12 +10,44 @@
   <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
   <title>Document</title>
 </head>
+
 <body>
 
   <div id="app">
 
+    <div class="container-fluid p-0 position-relative vh-100">
+      <div class="background-upper-bar position-absolute w-100">
+      </div>
+
+      <div class="row w-100 h-100 position-relative justify-content-center align-items-center">
+        <div class="col-10 bg-primary p-0" style="height: 90%;">
+          <div class="whatsapp-container h-100 d-flex">
+            <!-- sidebar di sinistra -->
+            <div class="sidebar-section bg-danger h-100">
+              <!-- barra in alto della sidebar -->
+              <div class="sidebar-upperbar w-100 bg-secondary d-flex  justify-content-between">
+                <!-- sezione con foto profilo e nome dell'utente -->
+                <div class="profile-photo-user d-flex align-items-center">
+                  <img class="rounded-circle mx-2" src="./imgs/avatar_io.jpg" alt="">
+                  <div>
+                    Sofia
+                  </div>
+                </div>
+                <div class="sidebar-upperbar-tools d-flex align-items-center gap-2 p-2">
+                  <i class="fa-solid fa-circle-notch"></i>
+                  <i class="fa-solid fa-message"></i>
+                  <i class="fa-solid fa-ellipsis-vertical"></i>
+                </div>
+              </div>
+            </div>
+            <div class="chat-section bg-success h-100"></div>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
-  
+
   <script src="main.js"></script><!--  JS Custom Link -->
 </body>
+
 </html>
