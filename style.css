@@ -5,7 +5,7 @@
 }
 
 body {
-  background-image: url(./imgs/mine.jpg);
+  background-color: rgb(213, 219, 216);
 }
 
 .background-upper-bar {
@@ -18,18 +18,58 @@ body {
 }
 
 .sidebar-section {
-  flex-grow: 1;
+  width: calc((100% / 3) * 1)
 }
 
 .chat-section {
-  flex-grow: 2;
+  width: calc((100% / 3) * 2);
 }
 
 .sidebar-upperbar {
   height: 70px;
+  background-color: rgb(234, 234, 234);
 }
 
 .profile-photo-user img {
   width: 50px;
   aspect-ratio: 1/1;
+}
+
+.sidebar-notification-section {
+  background-color: rgb(142, 218, 252);
+}
+
+.notification-image {
+  width: 50px;
+  height: 50px
+}
+
+.single-chat-preview:hover {
+  background-color: rgb(233, 235, 235);
+}
+
+.chat-upperbar {
+  height: 70px;
+  /* border-left: 1px solid black; */
+  background-color: rgb(234, 234, 234);
+}
+
+.chat-container {
+  background-image: url(./imgs/mine.jpg);
+}
+
+.sent-message {
+  background-color: rgb(213, 249, 186);
+  width: 30%;
+}
+
+.received-message {
+  width: 30%;
+}
+
+.card-hour {
+  text-align: end;
+  font-size: .7rem;
+  padding: .3rem;
+  padding-top: 0;
 }

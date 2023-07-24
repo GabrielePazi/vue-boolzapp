@@ -19,13 +19,15 @@
       <div class="background-upper-bar position-absolute w-100">
       </div>
 
-      <div class="row w-100 h-100 position-relative justify-content-center align-items-center">
-        <div class="col-10 bg-primary p-0" style="height: 90%;">
+      <div class="row h-100 position-relative justify-content-center align-items-center">
+        <div class="col-10 p-0" style="height: 90%;">
           <div class="whatsapp-container h-100 d-flex">
-            <!-- sidebar di sinistra -->
-            <div class="sidebar-section bg-danger h-100">
+
+            <!-- Sidebar di sinistra -->
+            <div class="sidebar-section bg-white overflow-hidden d-flex flex-column">
+
               <!-- barra in alto della sidebar -->
-              <div class="sidebar-upperbar w-100 bg-secondary d-flex  justify-content-between">
+              <div class="sidebar-upperbar d-flex justify-content-between">
                 <!-- sezione con foto profilo e nome dell'utente -->
                 <div class="profile-photo-user d-flex align-items-center">
                   <img class="rounded-circle mx-2" src="./imgs/avatar_io.jpg" alt="">
@@ -33,14 +35,111 @@
                     Sofia
                   </div>
                 </div>
-                <div class="sidebar-upperbar-tools d-flex align-items-center gap-2 p-2">
+                <!-- upperbar tools -->
+                <div class="d-flex align-items-center gap-2 p-2 text-secondary">
                   <i class="fa-solid fa-circle-notch"></i>
                   <i class="fa-solid fa-message"></i>
                   <i class="fa-solid fa-ellipsis-vertical"></i>
                 </div>
               </div>
+
+              <!-- notifiche -->
+              <div class="sidebar-notification-section d-flex gap-2 align-items-center">
+                <div
+                  class="notification-image bg-white text-primary d-flex justify-content-center align-items-center rounded-circle fs-5 m-2">
+                  <i class="fa-solid fa-bell-slash"></i>
+                </div>
+                <div class="">
+                  <div class="m-0">Ricevi notifiche di nuovi messaggi</div>
+                  <div><a href="#" class="text-secondary">Attiva notifiche desktop</a></div>
+                </div>
+              </div>
+
+              <!-- barra di ricerca -->
+              <div class="input-group mb-3 p-2 bg-light">
+                <span class="input-group-text" id="basic-addon1"><i class="fa-solid fa-magnifying-glass"></i></span>
+                <input type="text" class="form-control" aria-describedby="basic-addon1">
+              </div>
+
+              <!-- sezione con anteprima delle chat -->
+              <div class="chat-preview-section bg-light overflow-auto">
+
+                <!-- Anteprima di una singola chat -->
+                <div class="single-chat-preview d-flex justify-content-between border-top border-bottom">
+                  <!-- foto profilo e nome del destinatario -->
+                  <div class="profile-photo-user d-flex align-items-center">
+                    <img class="rounded-circle mx-2" src="./imgs/avatar_1.jpg" alt="">
+                    <div>
+                      <div class="fs-5">Michele</div>
+                      <p style="font-size: .8rem;" class="text-secondary">Ultimo messaggio inviato</p>
+                    </div>
+                  </div>
+                  <!-- ora a destra -->
+                  <div>
+                    <div style="font-size: .7rem;" class="text-secondary pe-2">12:00</div>
+                  </div>
+                </div>
+
+                <div class="single-chat-preview d-flex justify-content-between border-top border-bottom">
+                  <!-- foto profilo e nome del destinatario -->
+                  <div class="profile-photo-user d-flex align-items-center">
+                    <img class="rounded-circle mx-2" src="./imgs/avatar_2.jpg" alt="">
+                    <div>
+                      <div class="fs-5">Stefano</div>
+                      <p style="font-size: .8rem;" class="text-secondary">Ultimo messaggio inviato</p>
+                    </div>
+                  </div>
+                  <!-- ora a destra -->
+                  <div>
+                    <div style="font-size: .7rem;" class="text-secondary pe-2">12:00</div>
+                  </div>
+                </div>
+
+              </div>
             </div>
-            <div class="chat-section bg-success h-100"></div>
+
+            <!-- Sezione con la singola chat -->
+            <div class="chat-section overflow-hidden">
+
+              <!-- Barra in alto della chat -->
+              <div class="chat-upperbar d-flex justify-content-between border-start border-2">
+
+                <!-- sezione con foto profilo e nome dell'utente -->
+                <div class="profile-photo-user d-flex align-items-center">
+                  <img class="rounded-circle mx-2" src="./imgs/avatar_1.jpg" alt="">
+                  <div>
+                    Michele
+                  </div>
+                </div>
+                <div class="sidebar-upperbar-tools d-flex align-items-center gap-2 p-2 text-secondary">
+                  <i class="fa-solid fa-circle-notch"></i>
+                  <i class="fa-solid fa-message"></i>
+                  <i class="fa-solid fa-ellipsis-vertical"></i>
+                </div>
+              </div>
+
+              <!-- Chat -->
+              <div class="chat-container h-100 overflow-auto d-flex flex-column">
+
+                <div class="card sent-message align-self-end m-3">
+                  <div class="card-body pb-1">
+                    Saluta la mamma
+                  </div>
+                  <div class="card-hour text-secondary">
+                    12:00
+                  </div>
+                </div>
+
+                <div class="card received-message align-self-start m-3">
+                  <div class="card-body pb-1">
+                    Ora lo faccio
+                  </div>
+                  <div class="card-hour text-secondary">
+                    12:01
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
