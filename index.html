@@ -58,7 +58,8 @@
               <!-- barra di ricerca -->
               <div class="input-group mb-3 p-2 bg-light">
                 <span class="input-group-text" id="basic-addon1"><i class="fa-solid fa-magnifying-glass"></i></span>
-                <input type="text" class="form-control" placeholder="Cerca una chat" aria-describedby="basic-addon1">
+                <input type="text" class="form-control" placeholder="Cerca una chat" aria-describedby="basic-addon1"
+                  v-model="searchedChat">
               </div>
 
               <!-- sezione con anteprima delle chat -->
@@ -66,7 +67,8 @@
 
                 <!-- Anteprima di una singola chat -->
                 <div class="single-chat-preview d-flex justify-content-between border-top border-bottom"
-                  v-for="contact in contatti" @click="openChat(contact)">
+                  v-for="contact in contatti" @click="openChat(contact)"
+                  v-bind:class="contact.name.toLowerCase().includes(searchedChat) || contact.name.includes(searchedChat) ? '': 'd-none'">
                   <!-- foto profilo e nome del destinatario -->
                   <div class="profile-photo-user d-flex align-items-center">
                     <img class="rounded-circle mx-2" :src=`./imgs/avatar${contact.avatar}.jpg` alt="">

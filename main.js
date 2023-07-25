@@ -93,7 +93,8 @@ const app = Vue.createApp({
         messages: [
         ]
       },
-      newMessage: ""
+      newMessage: "",
+      searchedChat: ""
     }
   },
   methods: {
@@ -136,5 +137,7 @@ const app = Vue.createApp({
   },
   beforeMount() {
     this.currentContact = this.contatti[0]
+  },
+  mounted() {
   }
 }).mount('#app')
