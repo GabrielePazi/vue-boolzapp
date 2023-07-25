@@ -44,6 +44,14 @@ body {
   height: 50px
 }
 
+.notification-text {
+  font-size: .9rem;
+}
+
+.notification-link {
+  font-size: .8rem;
+}
+
 .single-chat-preview:hover {
   background-color: rgb(233, 235, 235);
 }
@@ -58,12 +66,18 @@ body {
 }
 
 .sent-message {
+  align-self: flex-end;
   background-color: rgb(213, 249, 186);
   width: 30%;
 }
 
 .received-message {
+  align-self: flex-start;
   width: 30%;
+}
+
+.last-access {
+  font-size: .8rem;
 }
 
 .card-hour {

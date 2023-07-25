@@ -49,43 +49,29 @@
                   class="notification-image bg-white text-primary d-flex justify-content-center align-items-center rounded-circle fs-5 m-2">
                   <i class="fa-solid fa-bell-slash"></i>
                 </div>
-                <div class="">
-                  <div class="m-0">Ricevi notifiche di nuovi messaggi</div>
-                  <div><a href="#" class="text-secondary">Attiva notifiche desktop</a></div>
+                <div>
+                  <div class="m-0 notification-text">Ricevi notifiche di nuovi messaggi</div>
+                  <div><a href="#" class="text-secondary notification-link">Attiva notifiche desktop</a></div>
                 </div>
               </div>
 
               <!-- barra di ricerca -->
               <div class="input-group mb-3 p-2 bg-light">
                 <span class="input-group-text" id="basic-addon1"><i class="fa-solid fa-magnifying-glass"></i></span>
-                <input type="text" class="form-control" aria-describedby="basic-addon1">
+                <input type="text" class="form-control" placeholder="Cerca una chat" aria-describedby="basic-addon1">
               </div>
 
               <!-- sezione con anteprima delle chat -->
               <div class="chat-preview-section bg-light overflow-auto">
 
                 <!-- Anteprima di una singola chat -->
-                <div class="single-chat-preview d-flex justify-content-between border-top border-bottom">
+                <div class="single-chat-preview d-flex justify-content-between border-top border-bottom"
+                  v-for="contact in contatti" @click="openChat(contact)">
                   <!-- foto profilo e nome del destinatario -->
                   <div class="profile-photo-user d-flex align-items-center">
-                    <img class="rounded-circle mx-2" src="./imgs/avatar_1.jpg" alt="">
+                    <img class="rounded-circle mx-2" :src=`./imgs/avatar${contact.avatar}.jpg` alt="">
                     <div>
-                      <div class="fs-5">Michele</div>
-                      <p style="font-size: .8rem;" class="text-secondary">Ultimo messaggio inviato</p>
-                    </div>
-                  </div>
-                  <!-- ora a destra -->
-                  <div>
-                    <div style="font-size: .7rem;" class="text-secondary pe-2">12:00</div>
-                  </div>
-                </div>
-
-                <div class="single-chat-preview d-flex justify-content-between border-top border-bottom">
-                  <!-- foto profilo e nome del destinatario -->
-                  <div class="profile-photo-user d-flex align-items-center">
-                    <img class="rounded-circle mx-2" src="./imgs/avatar_2.jpg" alt="">
-                    <div>
-                      <div class="fs-5">Stefano</div>
+                      <div class="fs-5">{{contact.name}}</div>
                       <p style="font-size: .8rem;" class="text-secondary">Ultimo messaggio inviato</p>
                     </div>
                   </div>
@@ -106,14 +92,15 @@
 
                 <!-- sezione con foto profilo e nome dell'utente -->
                 <div class="profile-photo-user d-flex align-items-center">
-                  <img class="rounded-circle mx-2" src="./imgs/avatar_1.jpg" alt="">
-                  <div>
-                    Michele
+                  <img class="rounded-circle mx-2" :src=`./imgs/avatar${currentContact.avatar}.jpg` alt="">
+                  <div class="">
+                    <div>{{currentContact.name}}</div>
+                    <p class="last-access text-secondary m-0">Ultmo accesso oggi alle 12:00</p>
                   </div>
                 </div>
                 <div class="sidebar-upperbar-tools d-flex align-items-center gap-3 p-2 me-3 text-secondary">
-                  <i class="fa-solid fa-circle-notch"></i>
-                  <i class="fa-solid fa-message"></i>
+                  <i class="fa-solid fa-search"></i>
+                  <i class="fa-solid fa-paperclip"></i>
                   <i class="fa-solid fa-ellipsis-vertical"></i>
                 </div>
               </div>
@@ -121,33 +108,33 @@
               <!-- Chat -->
               <div class="chat-container overflow-auto d-flex flex-column flex-grow-1">
 
-                <div class="card sent-message align-self-end m-3">
+                <div class="card m-3" v-for="messaggio in currentContact.messages"
+                  v-bind:class="messaggio.status == 'sent' ? 'sent-message' : 'received-message'">
                   <div class="card-body pb-1">
-                    Saluta la mamma
+                    {{messaggio.message}}
                   </div>
                   <div class="card-hour text-secondary">
                     12:00
                   </div>
                 </div>
 
-                <div class="card received-message align-self-start m-3">
-                  <div class="card-body pb-1">
-                    Ora lo faccio
-                  </div>
-                  <div class="card-hour text-secondary">
-                    12:01
-                  </div>
-                </div>
-
               </div>
 
               <!-- Input del messaggio -->
-              <div class="input-group">
-                <span class="input-group-text rounded-0 text-secondary"><i class="fa-regular fa-face-smile"></i></span>
-                <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)">
-                <span class="input-group-text rounded-0 text-secondary fs-5"><i
-                    class="fa-solid fa-microphone"></i></span>
+
+              <div class="card">
+                <div class="card-body py-2 px-1 rounded-0 bg-light">
+                  <div class="input-group">
+                    <span class="input-group-text border-0 rounded-0 text-secondary"><i
+                        class="fa-regular fa-face-smile"></i></span>
+                    <input type="text" class="form-control rounded-1" placeholder="Scrivi un messaggio"
+                      aria-label="Amount (to the nearest dollar)">
+                    <span class="input-group-text rounded-0 border-0 text-secondary fs-5"><i
+                        class="fa-solid fa-microphone"></i></span>
+                  </div>
+                </div>
               </div>
+
             </div>
           </div>
         </div>
