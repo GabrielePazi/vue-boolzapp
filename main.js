@@ -92,12 +92,46 @@ const app = Vue.createApp({
         avatar: "",
         messages: [
         ]
-      }
+      },
+      newMessage: ""
     }
   },
   methods: {
     openChat(contact) {
       this.currentContact = contact
+    },
+    sendMessage() {
+      const newMessageObj = {
+        date: "",
+        message: this.capitalize(this.newMessage),
+        status: "sent"
+      }
+      this.currentContact.messages.push(newMessageObj)
+
+      this.newMessage = ""
+
+      setTimeout(() => {
+        const newDefaultMessageObj = {
+          date: "",
+          message: "Okay",
+          status: "received"
+        }
+
+        this.currentContact.messages.push(newDefaultMessageObj)
+      }, 1000)
+    },
+    capitalize(string) {
+      let capitalizedString = ""
+
+      for (let i = 0; i < string.length; i++) {
+        if (i == 0) {
+          capitalizedString += string[i].toUpperCase()
+        } else {
+          capitalizedString += string[i]
+        }
+      }
+
+      return capitalizedString
     }
   },
   beforeMount() {
