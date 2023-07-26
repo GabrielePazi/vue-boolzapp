@@ -74,12 +74,14 @@
                     <img class="rounded-circle mx-2" :src=`./imgs/avatar${contact.avatar}.jpg` alt="">
                     <div>
                       <div class="fs-5">{{contact.name}}</div>
-                      <p style="font-size: .8rem;" class="text-secondary">Ultimo messaggio inviato</p>
+                      <p style="font-size: .8rem;" class="text-secondary">
+                        {{contact.messages[contact.messages.length-1].message}}</p>
                     </div>
                   </div>
                   <!-- Time -->
                   <div>
-                    <div style="font-size: .7rem;" class="text-secondary pe-2">12:00</div>
+                    <div style="font-size: .7rem;" class="text-secondary pe-2">
+                      {{formatDate(contact.messages[contact.messages.length-1].date)}}</div>
                   </div>
                 </div>
 
@@ -97,7 +99,7 @@
                   <img class="rounded-circle mx-2" :src=`./imgs/avatar${currentContact.avatar}.jpg` alt="">
                   <div class="">
                     <div>{{currentContact.name}}</div>
-                    <p class="last-access text-secondary m-0">Ultmo accesso oggi alle 12:00</p>
+                    <p class="last-access text-secondary m-0">Ultmo accesso oggi alle {{formatDate(contatti[contatti.length-1].messages[messages.length-1].date)}}</p> 
                   </div>
                 </div>
                 <div class="sidebar-upperbar-tools d-flex align-items-center gap-3 p-2 me-3 text-secondary">
