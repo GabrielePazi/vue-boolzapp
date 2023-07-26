@@ -102,8 +102,11 @@ const app = Vue.createApp({
       this.currentContact = contact
     },
     sendMessage() {
+
+      const currentTime = new Date()
+
       const newMessageObj = {
-        date: "",
+        date: currentTime.toLocaleDateString() + " " + currentTime.toLocaleTimeString(),
         message: this.capitalize(this.newMessage),
         status: "sent"
       }
@@ -112,14 +115,22 @@ const app = Vue.createApp({
       this.newMessage = ""
 
       setTimeout(() => {
+        const currentTime = new Date()
+
         const newDefaultMessageObj = {
-          date: "",
+          date: currentTime.toLocaleDateString() + " " + currentTime.toLocaleTimeString(),
           message: "Okay",
           status: "received"
         }
 
         this.currentContact.messages.push(newDefaultMessageObj)
       }, 1000)
+    },
+    formatDate(date) {
+      date = date.split(' ')[1]
+
+      date = date.split(':')[0] + ":" + date.split(':')[1]
+      return date
     },
     capitalize(string) {
       let capitalizedString = ""
