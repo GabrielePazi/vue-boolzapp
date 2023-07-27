@@ -105,26 +105,28 @@ const app = Vue.createApp({
 
       const currentTime = new Date()
 
-      const newMessageObj = {
-        date: currentTime.toLocaleDateString() + " " + currentTime.toLocaleTimeString(),
-        message: this.capitalize(this.newMessage),
-        status: "sent"
-      }
-      this.currentContact.messages.push(newMessageObj)
-
-      this.newMessage = ""
-
-      setTimeout(() => {
-        const currentTime = new Date()
-
-        const newDefaultMessageObj = {
+      if (this.newMessage !== "") {
+        const newMessageObj = {
           date: currentTime.toLocaleDateString() + " " + currentTime.toLocaleTimeString(),
-          message: "Okay",
-          status: "received"
+          message: this.capitalize(this.newMessage),
+          status: "sent"
         }
+        this.currentContact.messages.push(newMessageObj)
 
-        this.currentContact.messages.push(newDefaultMessageObj)
-      }, 1000)
+        this.newMessage = ""
+
+        setTimeout(() => {
+          const currentTime = new Date()
+
+          const newDefaultMessageObj = {
+            date: currentTime.toLocaleDateString() + " " + currentTime.toLocaleTimeString(),
+            message: "Okay",
+            status: "received"
+          }
+
+          this.currentContact.messages.push(newDefaultMessageObj)
+        }, 1000)
+      }
     },
     formatDate(date) {
       date = date.split(' ')[1]
