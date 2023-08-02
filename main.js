@@ -105,7 +105,7 @@ const app = Vue.createApp({
 
       const currentTime = new Date()
 
-      if (this.newMessage !== "") {
+      if (this.newMessage !== "" && this.checkOnlySpaces(this.newMessage)) {
         const newMessageObj = {
           date: currentTime.toLocaleDateString() + " " + currentTime.toLocaleTimeString(),
           message: this.capitalize(this.newMessage),
@@ -160,6 +160,9 @@ const app = Vue.createApp({
           break
         }
       }
+    },
+    checkOnlySpaces(str) {
+      return !str.trim() == ""  //str.trim() restituisce la stringa senza spazi 
     }
   },
   beforeMount() {
