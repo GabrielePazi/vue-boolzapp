@@ -87,6 +87,7 @@ const app = Vue.createApp({
           ],
         },
       ],
+      answers: ["Okay", "Non oggi", "Io Sono IronMan", "Il mio nome è Bot, James Bot", "Fuggi sciocco"],
       currentContact: {
         name: "",
         avatar: "",
@@ -120,13 +121,19 @@ const app = Vue.createApp({
 
           const newDefaultMessageObj = {
             date: currentTime.toLocaleDateString() + " " + currentTime.toLocaleTimeString(),
-            message: "Okay",
+            message: this.randomAnswer(),
             status: "received"
           }
 
           this.currentContact.messages.push(newDefaultMessageObj)
         }, 1000)
       }
+    },
+    randomAnswer() {
+      let rand = Math.floor(Math.random() * this.answers.length)
+      console.log(rand)
+
+      return this.answers[rand]
     },
     formatDate(date) {
       date = date.split(' ')[1]
@@ -154,7 +161,6 @@ const app = Vue.createApp({
       })*/
 
       for (let i = 0; i < currentContact.messages.length; i++) {
-        console.log(currentContact.messages[i], indexToDel);
         if (currentContact.messages[i].message == testoMess && indexToDel == i) {
           currentContact.messages.splice(i, 1)
           break
