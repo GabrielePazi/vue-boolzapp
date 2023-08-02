@@ -118,6 +118,8 @@
                   v-bind:class=`${messaggio.status}-message`>
                   <div class="card-body pb-1 d-flex ">
                     <p class="flex-grow-1 mb-0">{{messaggio.message}}</p>
+
+                    <!-- Dropdown menu -->
                     <div>
                       <div class="btn-group">
                         <button type="button" class="btn bg-transparent p-0 pe-1 border-0" data-bs-toggle="dropdown"
@@ -127,7 +129,7 @@
                         <ul class="dropdown-menu dropdown-menu-lg-end">
                           <li><button class="dropdown-item" type="button">Message Info</button></li>
                           <li><button class="dropdown-item" type="button"
-                              @click="(deleteMessage(messaggio.message, currentContact))">Delete Message</button></li>
+                              @click="(deleteMessage(messaggio.message, i, currentContact))">Delete Message</button></li>
                         </ul>
                       </div>
                     </div>

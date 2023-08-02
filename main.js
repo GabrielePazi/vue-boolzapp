@@ -147,14 +147,15 @@ const app = Vue.createApp({
 
       return capitalizedString
     },
-    deleteMessage(testoMess, currentContact) {
+    deleteMessage(testoMess, indexToDel, currentContact) {
       /*funziona ma cancella tutti i messaggio con il testo inserito, non solo uno   
       currentContact.messages = currentContact.messages.filter((el) => {
         return el.message !== testoMess
       })*/
 
       for (let i = 0; i < currentContact.messages.length; i++) {
-        if (currentContact.messages[i].message == testoMess) {
+        console.log(currentContact.messages[i], indexToDel);
+        if (currentContact.messages[i].message == testoMess && indexToDel == i) {
           currentContact.messages.splice(i, 1)
           break
         }
