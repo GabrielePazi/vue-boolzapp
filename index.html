@@ -129,7 +129,8 @@
                         <ul class="dropdown-menu dropdown-menu-lg-end">
                           <li><button class="dropdown-item" type="button">Message Info</button></li>
                           <li><button class="dropdown-item" type="button"
-                              @click="(deleteMessage(messaggio.message, i, currentContact))">Delete Message</button></li>
+                              @click="(deleteMessage(messaggio.message, i, currentContact))">Delete Message</button>
+                          </li>
                         </ul>
                       </div>
                     </div>
@@ -149,8 +150,11 @@
                         class="fa-regular fa-face-smile"></i></span>
                     <input type="text" class="form-control rounded-1" placeholder="Scrivi un messaggio"
                       v-model="newMessage" @keydown.enter="sendMessage()">
-                    <span class="input-group-text rounded-0 border-0 text-secondary fs-5"><i
+                      
+                    <span v-if="newMessage === ''" class="input-group-text rounded-0 border-0 text-secondary fs-5"><i
                         class="fa-solid fa-microphone"></i></span>
+                    <span v-if="newMessage !== ''" class="input-group-text rounded-0 border-0 text-secondary fs-5 ps-2"
+                      @click="sendMessage()"><i class="fa-solid fa-paper-plane"></i></span>
                   </div>
                 </div>
               </div>
