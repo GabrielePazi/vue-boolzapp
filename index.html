@@ -131,7 +131,7 @@
                           <ul class="dropdown-menu dropdown-menu-lg-end">
                             <li><button class="dropdown-item" type="button">Message Info</button></li>
                             <li><button class="dropdown-item" type="button"
-                                @click="(deleteMessage(messaggio.message, i, currentContact))">Delete Message</button>
+                                @click="(deleteMessage(messaggio.message, i))">Delete Message</button>
                             </li>
                           </ul>
                         </div>
@@ -156,8 +156,9 @@
 
                     <span v-if="newMessage === ''" class="input-group-text rounded-0 border-0 text-secondary fs-5"><i
                         class="fa-solid fa-microphone"></i></span>
-                    <button v-if="newMessage !== ''" class="input-group-text rounded-0 border-0 text-secondary fs-5 ps-2"
-                      @click="sendMessage()"><i class="fa-solid fa-paper-plane"></i></button>
+                    <button v-if="newMessage !== ''"
+                      class="input-group-text rounded-0 border-0 text-secondary fs-5 ps-2" @click="sendMessage()"><i
+                        class="fa-solid fa-paper-plane"></i></button>
                   </div>
                 </div>
               </div>
