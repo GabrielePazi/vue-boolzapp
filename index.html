@@ -101,7 +101,8 @@
                   <img class="rounded-circle mx-2" :src=`./imgs/avatar${currentContact.avatar}.jpg` alt="">
                   <div class="">
                     <div>{{currentContact.name}}</div>
-                    <p class="last-access text-secondary m-0">{{chatStatus}}</p>                  </div>
+                    <p class="last-access text-secondary m-0">{{chatStatus}}</p>
+                  </div>
                 </div>
                 <div class="sidebar-upperbar-tools d-flex align-items-center gap-3 p-2 me-3 text-secondary">
                   <i class="fa-solid fa-search"></i>
@@ -111,30 +112,34 @@
               </div>
 
               <!-- Messages -->
-              <div class="chat-container overflow-auto d-flex flex-column flex-grow-1 p-3 gap-3" ref="msgsContainer">
-                <div class="card" v-for="(messaggio, i) in currentContact.messages"
-                  v-bind:class=`${messaggio.status}-message`>
-                  <div class="card-body pb-1 d-flex">
-                    <p class="flex-grow-1 mb-0">{{messaggio.message}}</p>
+              <div class="chat-container overflow-auto flex-grow-1 d-flex flex-column" ref="chatContainer">
+                <div class="mt-auto p-3 d-flex flex-column gap-3">
 
-                    <!-- Dropdown menu -->
-                    <div>
-                      <div class="btn-group">
-                        <button type="button" class="btn bg-transparent p-0 pe-1 border-0" data-bs-toggle="dropdown"
-                          data-bs-display="static" aria-expanded="false">
-                          <i class="fa-solid fa-chevron-down"></i>
-                        </button>
-                        <ul class="dropdown-menu dropdown-menu-lg-end">
-                          <li><button class="dropdown-item" type="button">Message Info</button></li>
-                          <li><button class="dropdown-item" type="button"
-                              @click="(deleteMessage(messaggio.message, i, currentContact))">Delete Message</button>
-                          </li>
-                        </ul>
+                  <!-- Single Message -->
+                  <div class="card" v-for="(messaggio, i) in currentContact.messages"
+                    v-bind:class=`${messaggio.status}-message`>
+                    <div class="card-body pb-1 d-flex">
+                      <p class="flex-grow-1 mb-0">{{messaggio.message}}</p>
+
+                      <!-- Dropdown menu -->
+                      <div>
+                        <div class="btn-group">
+                          <button type="button" class="btn bg-transparent p-0 pe-1 border-0" data-bs-toggle="dropdown"
+                            data-bs-display="static" aria-expanded="false">
+                            <i class="fa-solid fa-chevron-down"></i>
+                          </button>
+                          <ul class="dropdown-menu dropdown-menu-lg-end">
+                            <li><button class="dropdown-item" type="button">Message Info</button></li>
+                            <li><button class="dropdown-item" type="button"
+                                @click="(deleteMessage(messaggio.message, i, currentContact))">Delete Message</button>
+                            </li>
+                          </ul>
+                        </div>
                       </div>
                     </div>
-                  </div>
-                  <div class="card-hour text-secondary">
-                    {{formatDate(messaggio.date)}}
+                    <div class="card-hour text-secondary">
+                      {{formatDate(messaggio.date)}}
+                    </div>
                   </div>
                 </div>
               </div>
@@ -148,11 +153,11 @@
                         class="fa-regular fa-face-smile"></i></span>
                     <input type="text" class="form-control rounded-1" placeholder="Scrivi un messaggio"
                       v-model="newMessage" @keydown.enter="sendMessage()">
-                      
+
                     <span v-if="newMessage === ''" class="input-group-text rounded-0 border-0 text-secondary fs-5"><i
                         class="fa-solid fa-microphone"></i></span>
-                    <span v-if="newMessage !== ''" class="input-group-text rounded-0 border-0 text-secondary fs-5 ps-2"
-                      @click="sendMessage()"><i class="fa-solid fa-paper-plane"></i></span>
+                    <button v-if="newMessage !== ''" class="input-group-text rounded-0 border-0 text-secondary fs-5 ps-2"
+                      @click="sendMessage()"><i class="fa-solid fa-paper-plane"></i></button>
                   </div>
                 </div>
               </div>

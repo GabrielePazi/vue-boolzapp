@@ -57,7 +57,7 @@ body {
 }
 
 .chat-upperbar {
-  height: 70px;
+  min-height: 70px;
   background-color: rgb(234, 234, 234);
 }
 

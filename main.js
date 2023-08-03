@@ -120,6 +120,7 @@ const app = Vue.createApp({
         this.newMessage = ""
         this.chatStatus = "Sta scrivendo..."
 
+        this.scrollBottom()
         setTimeout(() => {
           this.chatStatus = "Online"
 
@@ -130,15 +131,13 @@ const app = Vue.createApp({
             message: this.randomAnswer(),
             status: "received"
           }
-
           this.currentContact.messages.push(newDefaultMessageObj)
-
+          this.scrollBottom()
         }, 1000)
 
         setTimeout(() => {
           this.chatStatus = "Ultimo accesso oggi alle " + this.formatDate(this.currentContact.messages[this.currentContact.messages.length - 1].date)
         }, 2000);
-
       }
     },
     randomAnswer() {
@@ -180,6 +179,11 @@ const app = Vue.createApp({
     },
     checkOnlySpaces(str) {
       return !str.trim() == ""  //str.trim() restituisce la stringa senza spazi 
+    }, 
+    scrollBottom() {
+      this.$nextTick(() => {
+        this.$refs.chatContainer.scrollTop = this.$refs.chatContainer.scrollHeight;
+      })
     }
   },
   beforeMount() {
@@ -187,5 +191,6 @@ const app = Vue.createApp({
   },
   mounted() {
     this.chatStatus = "Ultimo accesso oggi alle " + this.formatDate(this.currentContact.messages[this.currentContact.messages.length - 1].date)
+    
   }
 }).mount('#app')
