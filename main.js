@@ -95,12 +95,15 @@ const app = Vue.createApp({
         ]
       },
       newMessage: "",
-      searchedChat: ""
+      searchedChat: "",
+      chatStatus: ""
     }
   },
   methods: {
     openChat(contact) {
       this.currentContact = contact
+
+      this.chatStatus = "Ultimo accesso oggi alle " + this.formatDate(this.currentContact.messages[this.currentContact.messages.length - 1].date)
     },
     sendMessage() {
 
@@ -115,8 +118,11 @@ const app = Vue.createApp({
         this.currentContact.messages.push(newMessageObj)
 
         this.newMessage = ""
+        this.chatStatus = "Sta scrivendo..."
 
         setTimeout(() => {
+          this.chatStatus = "Online"
+
           const currentTime = new Date()
 
           const newDefaultMessageObj = {
@@ -126,12 +132,17 @@ const app = Vue.createApp({
           }
 
           this.currentContact.messages.push(newDefaultMessageObj)
+
         }, 1000)
+
+        setTimeout(() => {
+          this.chatStatus = "Ultimo accesso oggi alle " + this.formatDate(this.currentContact.messages[this.currentContact.messages.length - 1].date)
+        }, 2000);
+
       }
     },
     randomAnswer() {
       let rand = Math.floor(Math.random() * this.answers.length)
-      console.log(rand)
 
       return this.answers[rand]
     },
@@ -175,5 +186,6 @@ const app = Vue.createApp({
     this.currentContact = this.contatti[0]
   },
   mounted() {
+    this.chatStatus = "Ultimo accesso oggi alle " + this.formatDate(this.currentContact.messages[this.currentContact.messages.length - 1].date)
   }
 }).mount('#app')
